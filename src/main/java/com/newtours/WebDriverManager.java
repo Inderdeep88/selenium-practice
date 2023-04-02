@@ -10,25 +10,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverManager {
-    private static WebDriver webDriver = null;
     static String webDriverBasePath= "/Users/inderdeep.singh/PersonalWorkspace/WebDrivers/";
-
-    public static synchronized WebDriver getDriverInstance()
-    {
-        if (webDriver == null) {
-            System.out.println("CREATING INSTANCE..");
-            webDriver = createDriverInstance();
-        }
-        return webDriver;
-    }
-
-    private static WebDriver createDriverInstance() {
+    public static synchronized WebDriver createDriverInstance() {
+        System.out.println("CREATING INSTANCE..");
+        WebDriver webDriver;
         if (System.getProperty("host") != null && System.getProperty("host").equals("grid")) {
-            return createRemoteWebDriver();
+            webDriver = createRemoteWebDriver();
         }
         else {
-            return createLocalWebDriver();
+            webDriver = createLocalWebDriver();
         }
+        System.out.println("Created Webdriver instance "+webDriver);
+        return webDriver;
     }
 
     private static WebDriver createLocalWebDriver(){

@@ -16,13 +16,11 @@ import java.util.Date;
 
 public class Utilities {
 
-    static WebDriver driver = WebDriverManager.getDriverInstance();
-
-    public static void addAttachment(String name) {
+    public static void addAttachment(String name, WebDriver driver) {
         Allure.addAttachment(name, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
-    public static void captureBrowserLogs(String logType) {
+    public static void captureBrowserLogs(String logType, WebDriver driver) {
         LogEntries logEntries = driver.manage().logs().get(logType);
         StringBuilder logs = new StringBuilder();
 

@@ -1,13 +1,16 @@
 package com.newtours.pages;
 
+import com.newtours.WebDriverManager;
 import com.newtours.elements.RegistrationConfirmationPageElement;
 import com.newtours.elements.RegistrationPageElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import io.qameta.allure.Step;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.newtours.utils.Utilities.addAttachment;
 
-public class RegistrationPage extends BasePage{
+public class RegistrationPage {
 
     private RegistrationPageElement registrationPageElement;
     private RegistrationConfirmationPageElement registrationConfirmationPageElement;
@@ -18,38 +21,42 @@ public class RegistrationPage extends BasePage{
     }
 
     @Step("Step to open the web URL")
-    public void goTo (){
-        System.out.println("\ninside goTo");
-        webDriver.get("https://demo.guru99.com/test/newtours/register.php");
-        webDriverWait.until(ExpectedConditions.visibilityOf(registrationPageElement.getFirstNameTxt()));
-        addAttachment("ScreenShot after opening URL");
+    public void goTo (WebDriver driver){
+        long id = Thread.currentThread().threadId();
+        System.out.println("\n"+id+" inside goTo" + driver);
+        driver.get("https://demo.guru99.com/test/newtours/register.php");
+        new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOf(registrationPageElement.getFirstNameTxt(driver)));
+        addAttachment("ScreenShot after opening URL", driver);
     }
 
     @Step("Step to Enter the Contact info")
-    public void enterContactInfo(String fname, String lname, String phone, String email){
-        System.out.println("inside enterContactInfo");
-        registrationPageElement.getFirstNameTxt().sendKeys(fname);
-        registrationPageElement.getLastNameTxt().sendKeys(lname);
-        registrationPageElement.getPhoneTxt().sendKeys(phone);
-        registrationPageElement.getEmailTxt().sendKeys(email);
-        addAttachment("ScreenShot enterContactInfo");
+    public void enterContactInfo(String fname, String lname, String phone, String email, WebDriver driver){
+        long id = Thread.currentThread().threadId();
+        System.out.println(id+" inside enterContactInfo" + driver);
+        registrationPageElement.getFirstNameTxt(driver).sendKeys(fname);
+        registrationPageElement.getLastNameTxt(driver).sendKeys(lname);
+        registrationPageElement.getPhoneTxt(driver).sendKeys(phone);
+        registrationPageElement.getEmailTxt(driver).sendKeys(email);
+        addAttachment("ScreenShot enterContactInfo", driver);
     }
 
     @Step("Step to Enter the User info")
-    public void enterUserInfo(String uname, String pass, String cpass){
-        System.out.println("inside enterUserInfo");
-        registrationPageElement.getUsernameTxt().sendKeys(uname);
-        registrationPageElement.getPasswordTxt().sendKeys(pass);
-        registrationPageElement.getConfirmPasswordTxt().sendKeys(cpass);
-        addAttachment("ScreenShot enterUserInfo");
+    public void enterUserInfo(String uname, String pass, String cpass, WebDriver driver){
+        long id = Thread.currentThread().threadId();
+        System.out.println(id+" inside enterUserInfo" + driver);
+        registrationPageElement.getUsernameTxt(driver).sendKeys(uname);
+        registrationPageElement.getPasswordTxt(driver).sendKeys(pass);
+        registrationPageElement.getConfirmPasswordTxt(driver).sendKeys(cpass);
+        addAttachment("ScreenShot enterUserInfo", driver);
     }
 
     @Step("Step to Click Submit")
-    public void submitInfo(){
-        System.out.println("inside submitInfo");
-        registrationPageElement.getSubmitBtn().click();
-        System.out.println("inside submitInfo - After click");
-        webDriverWait.until(ExpectedConditions.visibilityOf(registrationConfirmationPageElement.getConfText()));
-        System.out.println("inside submitInfo - After conftext wait");
+    public void submitInfo(WebDriver driver){
+        long id = Thread.currentThread().threadId();
+        System.out.println(id+" inside submitInfo" + driver);
+        registrationPageElement.getSubmitBtn(driver).click();
+        System.out.println(id+" inside submitInfo - After click" + driver);
+        new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOf(registrationConfirmationPageElement.getConfText(driver)));
+        System.out.println(id+" inside submitInfo - After conftext wait" + driver);
     }
 }

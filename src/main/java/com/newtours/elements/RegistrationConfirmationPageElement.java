@@ -1,25 +1,16 @@
 package com.newtours.elements;
 
-import com.newtours.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class RegistrationConfirmationPageElement {
 
-    WebDriver driver ;
-
-    public RegistrationConfirmationPageElement() {
-        this.driver = WebDriverManager.getDriverInstance();
-    }
-
-    public WebElement getConfText() {
+    public WebElement getConfText(WebDriver driver) {
         return driver.findElement(By.xpath("//b[contains(text(),\"Note\")]"));
     }
 
-    public WebElement getFlightsLink() {
+    public WebElement getFlightsLink(WebDriver driver) {
         return driver.findElement(By.linkText("Flights"));
     }
 }

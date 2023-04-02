@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="register-module">
-    <test name="Registration Flow">
+<suite name="register-module" thread-count="5" parallel="methods">
+<!--<suite name="register-module">-->
+    <test name="Registration Flow - 1">
         <classes>
             <class name="com.newtours.tests.RegistrationTest" />
         </classes>
