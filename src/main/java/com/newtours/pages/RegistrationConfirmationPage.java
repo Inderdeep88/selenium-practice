@@ -13,7 +13,9 @@ public class RegistrationConfirmationPage extends BasePage{
     }
 
     public String getConfTextValue(){
+        System.out.println("inside getConfTextValue - before attach");
         addAttachment("ScreenShot on Registration Conf page");
+        System.out.println("inside getConfTextValue - after attach");
         return registrationConfirmationPageElement.getConfText().getText();
     }
 

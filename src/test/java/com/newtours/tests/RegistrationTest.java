@@ -31,7 +31,9 @@ public class RegistrationTest extends BaseTest{
         registrationPage.submitInfo();
         String actConfText = registrationConfirmationPage.getConfTextValue();
         String refConfText = "Note: Your user name is isingh88_1.";
+        System.out.println("before assertion");
         Assert.assertEquals(actConfText, refConfText,"User Name miss match on Confirmation page");
+        System.out.println("after assertion");
     }
 
     @Test
@@ -44,7 +46,9 @@ public class RegistrationTest extends BaseTest{
         registrationPage.submitInfo();
         String actConfText = registrationConfirmationPage.getConfTextValue();
         String refConfText = "Note: Your user name is isingh88_2.";
+        System.out.println("before assertion");
         Assert.assertEquals(actConfText, refConfText,"User Name miss match on Confirmation page");
+        System.out.println("after assertion");
     }
 
 

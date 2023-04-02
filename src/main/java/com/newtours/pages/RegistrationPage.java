@@ -19,6 +19,7 @@ public class RegistrationPage extends BasePage{
 
     @Step("Step to open the web URL")
     public void goTo (){
+        System.out.println("\ninside goTo");
         webDriver.get("https://demo.guru99.com/test/newtours/register.php");
         webDriverWait.until(ExpectedConditions.visibilityOf(registrationPageElement.getFirstNameTxt()));
         addAttachment("ScreenShot after opening URL");
@@ -26,6 +27,7 @@ public class RegistrationPage extends BasePage{
 
     @Step("Step to Enter the Contact info")
     public void enterContactInfo(String fname, String lname, String phone, String email){
+        System.out.println("inside enterContactInfo");
         registrationPageElement.getFirstNameTxt().sendKeys(fname);
         registrationPageElement.getLastNameTxt().sendKeys(lname);
         registrationPageElement.getPhoneTxt().sendKeys(phone);
@@ -35,7 +37,7 @@ public class RegistrationPage extends BasePage{
 
     @Step("Step to Enter the User info")
     public void enterUserInfo(String uname, String pass, String cpass){
-        System.out.println("Hello");
+        System.out.println("inside enterUserInfo");
         registrationPageElement.getUsernameTxt().sendKeys(uname);
         registrationPageElement.getPasswordTxt().sendKeys(pass);
         registrationPageElement.getConfirmPasswordTxt().sendKeys(cpass);
@@ -44,7 +46,10 @@ public class RegistrationPage extends BasePage{
 
     @Step("Step to Click Submit")
     public void submitInfo(){
+        System.out.println("inside submitInfo");
         registrationPageElement.getSubmitBtn().click();
+        System.out.println("inside submitInfo - After click");
         webDriverWait.until(ExpectedConditions.visibilityOf(registrationConfirmationPageElement.getConfText()));
+        System.out.println("inside submitInfo - After conftext wait");
     }
 }

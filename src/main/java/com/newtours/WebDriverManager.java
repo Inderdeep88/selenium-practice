@@ -48,24 +48,21 @@ public class WebDriverManager {
         return localWebDriver;
     }
     private static WebDriver createRemoteWebDriver() {
-        DesiredCapabilities dc ;
-        WebDriver remoteWebDriver = null;
+        DesiredCapabilities dc = null;
+        WebDriver remoteWebDriver;
         String url = "http://"+System.getProperty("hubUrl")+":4444/wd/hub";
 
         if (System.getProperty("browser") != null && System.getProperty("browser").equals("chrome")){
             dc = DesiredCapabilities.chrome();
-            try {
-                remoteWebDriver = new RemoteWebDriver(new URL(url),dc);
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
+
         } else if (System.getProperty("browser") != null && System.getProperty("browser").equals("firefox")){
             dc = DesiredCapabilities.firefox();
-            try {
-                remoteWebDriver = new RemoteWebDriver(new URL(url), dc);
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
+        }
+
+        try {
+            remoteWebDriver = new RemoteWebDriver(new URL(url),dc);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
         }
         return remoteWebDriver;
     }
