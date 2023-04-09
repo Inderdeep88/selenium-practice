@@ -74,7 +74,7 @@ public class RegistrationTest extends BaseTest {
         registrationPage.enterUserInfo("isingh88_4","hello@123","hello@123",webDriverThreadLocal.get());
         registrationPage.submitInfo(webDriverThreadLocal.get());
         String actConfText = registrationConfirmationPage.getConfTextValue(webDriverThreadLocal.get());
-        String refConfText = "Note: Your user name is isingh88_3.";
+        String refConfText = "Note: Your user name is isingh88_4.";
         Assert.assertEquals(actConfText, refConfText,"User Name miss match on Confirmation page");
     }
 
@@ -85,7 +85,7 @@ public class RegistrationTest extends BaseTest {
         long id = Thread.currentThread().threadId();
         registrationPage.goTo(webDriverThreadLocal.get());
         registrationPage.enterContactInfo("Inder2","Singh2","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
-        registrationPage.enterUserInfo("isingh88_5","hello@123","hello@123",webDriverThreadLocal.get());
+        registrationPage.enterUserInfo("isingh88_5","hello@123","hello@1234",webDriverThreadLocal.get());
         registrationPage.submitInfo(webDriverThreadLocal.get());
         String actConfText = registrationConfirmationPage.getConfTextValue(webDriverThreadLocal.get());
         String refConfText = "Note: Your user name is isingh88_5.";

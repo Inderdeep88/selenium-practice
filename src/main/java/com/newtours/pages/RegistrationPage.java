@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 import static com.newtours.utils.Utilities.addAttachment;
 
 public class RegistrationPage {
@@ -25,7 +27,7 @@ public class RegistrationPage {
         long id = Thread.currentThread().threadId();
         System.out.println("\n"+id+" inside goTo" + driver);
         driver.get("https://demo.guru99.com/test/newtours/register.php");
-        new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOf(registrationPageElement.getFirstNameTxt(driver)));
+        new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(registrationPageElement.getFirstNameTxt(driver)));
         addAttachment("ScreenShot after opening URL", driver);
     }
 
@@ -56,7 +58,7 @@ public class RegistrationPage {
         System.out.println(id+" inside submitInfo" + driver);
         registrationPageElement.getSubmitBtn(driver).click();
         System.out.println(id+" inside submitInfo - After click" + driver);
-        new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOf(registrationConfirmationPageElement.getConfText(driver)));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(registrationConfirmationPageElement.getConfText(driver)));
         System.out.println(id+" inside submitInfo - After conftext wait" + driver);
     }
 }

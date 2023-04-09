@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import static com.newtours.utils.Utilities.addAttachment;
+
 public abstract class BaseTest {
 
     ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
@@ -24,6 +26,7 @@ public abstract class BaseTest {
     @Step("Step to Quit Driver")
     public void quitDriver() {
         long id = Thread.currentThread().threadId();
+        addAttachment("ScreenShot before Quit", webDriverThreadLocal.get());
         System.out.println("QuitDriver method. Thread id is: " + id);
         webDriverThreadLocal.get().quit();
     }

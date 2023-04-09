@@ -1,8 +1,11 @@
 package com.newtours;
 
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -41,19 +44,23 @@ public class WebDriverManager {
         return localWebDriver;
     }
     private static WebDriver createRemoteWebDriver() {
-        DesiredCapabilities dc = null;
+        MutableCapabilities capabilities ;
         WebDriver remoteWebDriver;
+
         String url = "http://"+System.getProperty("hubUrl")+":4444/wd/hub";
 
         if (System.getProperty("browser") != null && System.getProperty("browser").equals("chrome")){
-            dc = DesiredCapabilities.chrome();
-
+            capabilities = new ChromeOptions();
+            capabilities.setCapability("browserVersion","67.0");
         } else if (System.getProperty("browser") != null && System.getProperty("browser").equals("firefox")){
-            dc = DesiredCapabilities.firefox();
+            capabilities = new FirefoxOptions();
+        } else {
+            capabilities = new ChromeOptions();
+            capabilities.setCapability("browserVersion","67.0");
         }
 
         try {
-            remoteWebDriver = new RemoteWebDriver(new URL(url),dc);
+            remoteWebDriver = new RemoteWebDriver(new URL(url),capabilities);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
