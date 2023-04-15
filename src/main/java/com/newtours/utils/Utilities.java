@@ -1,23 +1,21 @@
 package com.newtours.utils;
 
-import com.newtours.WebDriverManager;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogType;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Date;
 
 public class Utilities {
 
     public static void addAttachment(String name, WebDriver driver) {
-        Allure.addAttachment(name, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        long id = Thread.currentThread().threadId();
+        Allure.addAttachment("Thread ID [" + id + "] - ["+ driver + "]" + name, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
     public static void captureBrowserLogs(String logType, WebDriver driver) {

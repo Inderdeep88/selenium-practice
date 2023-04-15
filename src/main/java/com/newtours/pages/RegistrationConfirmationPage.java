@@ -1,13 +1,13 @@
 package com.newtours.pages;
 
 import com.newtours.elements.RegistrationConfirmationPageElement;
+import com.newtours.utils.Log;
 import org.openqa.selenium.WebDriver;
 
 import static com.newtours.utils.Utilities.addAttachment;
 
 public class RegistrationConfirmationPage extends BasePage{
 
-//    private WebDriver webDriver;
     private RegistrationConfirmationPageElement registrationConfirmationPageElement;
 
     public RegistrationConfirmationPage(WebDriver webDriver) {
@@ -16,10 +16,9 @@ public class RegistrationConfirmationPage extends BasePage{
         this.webDriver = webDriver;
     }
 
-    public synchronized String getConfTextValue(){
-        long id = Thread.currentThread().threadId();
-        addAttachment(id + " ScreenShot on Registration Conf page " +webDriver, webDriver);
-        System.out.println(id + " inside getConfTextValue - after attach" + webDriver);
+    public String getConfTextValue(){
+        addAttachment("ScreenShot on Registration Conf page", webDriver);
+        Log.info("inside getConfTextValue - after attach");
         return registrationConfirmationPageElement.getConfText().getText();
     }
 }

@@ -1,12 +1,12 @@
 package com.newtours;
 
+import com.newtours.utils.Log;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -16,7 +16,7 @@ public class WebDriverManager {
     static String webDriverBasePath= "src/main/resources/";
     public static WebDriver createDriverInstance() {
         long id = Thread.currentThread().threadId();
-        System.out.println(id+" CREATING INSTANCE..");
+        Log.info("CREATING WEBDRIVER INSTANCE..");
         WebDriver webDriver;
         if (System.getProperty("host") != null && System.getProperty("host").equals("grid")) {
             webDriver = createRemoteWebDriver();
@@ -24,7 +24,7 @@ public class WebDriverManager {
         else {
             webDriver = createLocalWebDriver();
         }
-        System.out.println(id+" Created Webdriver instance "+webDriver);
+        Log.info("Created Webdriver instance ", webDriver);
         return webDriver;
     }
 
