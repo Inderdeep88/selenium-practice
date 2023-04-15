@@ -30,3 +30,21 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+  allure:
+    image: "frankescobar/allure-docker-service:2.21.0"
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: NONE
+      KEEP_HISTORY: 1
+      KEEP_HISTORY_LATEST: 25
+    ports:
+      - "5050:5050"
+    volumes:
+      - ${PWD}/../projects:/app/projects
+
+  allure-ui:
+    image: "frankescobar/allure-docker-service-ui:7.0.2"
+    environment:
+      ALLURE_DOCKER_PUBLIC_API_URL: "http://localhost:5050"
+      ALLURE_DOCKER_PUBLIC_API_URL_PREFIX: ""
+    ports:
+      - "5252:5252"

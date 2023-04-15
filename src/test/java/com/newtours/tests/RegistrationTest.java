@@ -20,6 +20,8 @@ public class RegistrationTest extends BaseTest {
     public void setupPages() {
         this.registrationPage = new RegistrationPage();
         this.registrationConfirmationPage = new RegistrationConfirmationPage();
+        long id = Thread.currentThread().threadId();
+        System.out.println(id+ " try bro");
     }
 
     @Test
@@ -28,7 +30,7 @@ public class RegistrationTest extends BaseTest {
     public void TestRegistrationFlow1() {
         long id = Thread.currentThread().threadId();
         registrationPage.goTo(webDriverThreadLocal.get());
-        registrationPage.enterContactInfo("Inder","Singh","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
+        registrationPage.enterContactInfo("Inder1","Singh1","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
         registrationPage.enterUserInfo("isingh88_1","hello@123","hello@123",webDriverThreadLocal.get());
         registrationPage.submitInfo(webDriverThreadLocal.get());
         String actConfText = registrationConfirmationPage.getConfTextValue(webDriverThreadLocal.get());
@@ -56,7 +58,7 @@ public class RegistrationTest extends BaseTest {
     public void TestRegistrationFlow3() {
         long id = Thread.currentThread().threadId();
         registrationPage.goTo(webDriverThreadLocal.get());
-        registrationPage.enterContactInfo("Inder2","Singh2","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
+        registrationPage.enterContactInfo("Inder3","Singh3","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
         registrationPage.enterUserInfo("isingh88_3","hello@123","hello@123",webDriverThreadLocal.get());
         registrationPage.submitInfo(webDriverThreadLocal.get());
         String actConfText = registrationConfirmationPage.getConfTextValue(webDriverThreadLocal.get());
@@ -70,7 +72,7 @@ public class RegistrationTest extends BaseTest {
     public void TestRegistrationFlow4() {
         long id = Thread.currentThread().threadId();
         registrationPage.goTo(webDriverThreadLocal.get());
-        registrationPage.enterContactInfo("Inder2","Singh2","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
+        registrationPage.enterContactInfo("Inder4","Singh4","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
         registrationPage.enterUserInfo("isingh88_4","hello@123","hello@123",webDriverThreadLocal.get());
         registrationPage.submitInfo(webDriverThreadLocal.get());
         String actConfText = registrationConfirmationPage.getConfTextValue(webDriverThreadLocal.get());
@@ -84,8 +86,8 @@ public class RegistrationTest extends BaseTest {
     public void TestRegistrationFlow5() {
         long id = Thread.currentThread().threadId();
         registrationPage.goTo(webDriverThreadLocal.get());
-        registrationPage.enterContactInfo("Inder2","Singh2","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
-        registrationPage.enterUserInfo("isingh88_5","hello@123","hello@1234",webDriverThreadLocal.get());
+        registrationPage.enterContactInfo("Inder5","Singh5","9654110337","inderdeep88@gmail.com",webDriverThreadLocal.get());
+        registrationPage.enterUserInfo("isingh88_5","hello@123","hello@123",webDriverThreadLocal.get());
         registrationPage.submitInfo(webDriverThreadLocal.get());
         String actConfText = registrationConfirmationPage.getConfTextValue(webDriverThreadLocal.get());
         String refConfText = "Note: Your user name is isingh88_5.";

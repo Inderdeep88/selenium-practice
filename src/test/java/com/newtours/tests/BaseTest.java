@@ -10,6 +10,7 @@ import static com.newtours.utils.Utilities.addAttachment;
 
 public abstract class BaseTest {
 
+    WebDriver webDriver;
     ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     abstract public void setupPages();
 
@@ -17,8 +18,10 @@ public abstract class BaseTest {
     @Step("Step to Setup Driver")
     public void createDriver(){
         long id = Thread.currentThread().threadId();
-        System.out.println("Before test-method. Thread id is: " + id);
         webDriverThreadLocal.set(WebDriverManager.createDriverInstance());
+        webDriver = webDriverThreadLocal.get();
+        System.out.println(id + " creating WTL " +webDriverThreadLocal.get());
+        System.out.println(id + " creating normal WD " +webDriver);
         setupPages();
     }
 
@@ -27,7 +30,8 @@ public abstract class BaseTest {
     public void quitDriver() {
         long id = Thread.currentThread().threadId();
         addAttachment("ScreenShot before Quit", webDriverThreadLocal.get());
-        System.out.println("QuitDriver method. Thread id is: " + id);
+        System.out.println(id + " quiting  WTL " +webDriverThreadLocal.get());
+        System.out.println(id + " quiting normal WD" +webDriver);
         webDriverThreadLocal.get().quit();
     }
 

@@ -1,3 +1,5 @@
 .idea/
 target/
 allure-data/
+.DS_Store
+projects

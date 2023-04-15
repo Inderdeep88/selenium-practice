@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverManager {
-    static String webDriverBasePath= "/Users/inderdeep.singh/PersonalWorkspace/WebDrivers/";
+    static String webDriverBasePath= "src/main/resources/";
     public static synchronized WebDriver createDriverInstance() {
         System.out.println("CREATING INSTANCE..");
         WebDriver webDriver;
@@ -30,16 +30,20 @@ public class WebDriverManager {
     private static WebDriver createLocalWebDriver(){
         WebDriver localWebDriver;
         if (System.getProperty("browser") != null && System.getProperty("browser").equals("chrome")){
-            System.setProperty("webdriver.chrome.driver", webDriverBasePath + "chromedriver");
+            System.setProperty("webdriver.chrome.driver", webDriverBasePath + "chromedriver_112");
             System.setProperty("webdriver.chrome.logfile", webDriverBasePath + "chromedriver.log");
             System.setProperty("webdriver.chrome.verboseLogging", "true");
-            localWebDriver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            localWebDriver = new ChromeDriver(options);
         }else if (System.getProperty("browser") != null && System.getProperty("browser").equals("firefox")){
             System.setProperty("webdriver.gecko.driver", webDriverBasePath + "geckodriver");
             localWebDriver = new FirefoxDriver();
         } else {
             System.setProperty("webdriver.chrome.driver", webDriverBasePath + "chromedriver");
-            localWebDriver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            localWebDriver = new ChromeDriver(options);
         }
         return localWebDriver;
     }
@@ -51,12 +55,10 @@ public class WebDriverManager {
 
         if (System.getProperty("browser") != null && System.getProperty("browser").equals("chrome")){
             capabilities = new ChromeOptions();
-            capabilities.setCapability("browserVersion","67.0");
         } else if (System.getProperty("browser") != null && System.getProperty("browser").equals("firefox")){
             capabilities = new FirefoxOptions();
         } else {
             capabilities = new ChromeOptions();
-            capabilities.setCapability("browserVersion","67.0");
         }
 
         try {
