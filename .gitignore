@@ -4,3 +4,4 @@ allure-data/
 .DS_Store
 projects
 .log
+log4j2/
