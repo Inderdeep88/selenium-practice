@@ -1,10 +1,12 @@
 package com.newtours.tests;
 
 import com.newtours.WebDriverManager;
-import io.qameta.allure.Step;
+import com.newtours.utils.Log;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import static com.newtours.utils.Utilities.addAttachment;
 
@@ -13,7 +15,8 @@ public abstract class BaseTest {
     private ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
 
     @BeforeMethod
-    public void createDriver(){
+    public void createDriver(ITestContext context){
+        Thread.currentThread().setName(context.getCurrentXmlTest().getName());
         webDriverThreadLocal.set(WebDriverManager.createDriverInstance());
     }
 

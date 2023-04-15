@@ -1,5 +1,6 @@
 package com.newtours.elements;
 
+import com.newtours.utils.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +13,6 @@ public class RegistrationConfirmationPageElement {
         this.webDriver = webDriver;
     }
     public WebElement getConfText() {
-        long id = Thread.currentThread().threadId();
-        System.out.println(id+ "getConfText" + webDriver);
         return webDriver.findElement(By.xpath("//b[contains(text(),\"Note\")]"));
     }
 
