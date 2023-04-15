@@ -21,7 +21,6 @@ public class RegistrationPage extends BasePage{
         super(webDriver);
         this.registrationPageElement = new RegistrationPageElement(webDriver);
         this.registrationConfirmationPageElement = new RegistrationConfirmationPageElement(webDriver);
-        this.webDriver = webDriver;
     }
 
     @Step("Step to open the web URL")
