@@ -6,11 +6,18 @@ import org.openqa.selenium.WebElement;
 
 public class RegistrationConfirmationPageElement {
 
-    public WebElement getConfText(WebDriver driver) {
-        return driver.findElement(By.xpath("//b[contains(text(),\"Note\")]"));
+    WebDriver webDriver;
+
+    public RegistrationConfirmationPageElement(WebDriver webDriver){
+        this.webDriver = webDriver;
+    }
+    public WebElement getConfText() {
+        long id = Thread.currentThread().threadId();
+        System.out.println(id+ "getConfText" + webDriver);
+        return webDriver.findElement(By.xpath("//b[contains(text(),\"Note\")]"));
     }
 
-    public WebElement getFlightsLink(WebDriver driver) {
-        return driver.findElement(By.linkText("Flights"));
+    public WebElement getFlightsLink() {
+        return webDriver.findElement(By.linkText("Flights"));
     }
 }

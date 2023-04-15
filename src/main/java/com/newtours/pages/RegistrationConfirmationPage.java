@@ -5,19 +5,21 @@ import org.openqa.selenium.WebDriver;
 
 import static com.newtours.utils.Utilities.addAttachment;
 
-public class RegistrationConfirmationPage {
+public class RegistrationConfirmationPage extends BasePage{
 
+//    private WebDriver webDriver;
     private RegistrationConfirmationPageElement registrationConfirmationPageElement;
 
-    public RegistrationConfirmationPage() {
-        this.registrationConfirmationPageElement = new RegistrationConfirmationPageElement();
+    public RegistrationConfirmationPage(WebDriver webDriver) {
+        super(webDriver);
+        this.registrationConfirmationPageElement = new RegistrationConfirmationPageElement(webDriver);
+        this.webDriver = webDriver;
     }
 
-    public String getConfTextValue(WebDriver driver){
+    public synchronized String getConfTextValue(){
         long id = Thread.currentThread().threadId();
-        System.out.println(id+" inside getConfTextValue - before attach" + driver);
-        addAttachment("ScreenShot on Registration Conf page", driver);
-        System.out.println(id+" inside getConfTextValue - after attach" + driver);
-        return registrationConfirmationPageElement.getConfText(driver).getText();
+        addAttachment(id + " ScreenShot on Registration Conf page " +webDriver, webDriver);
+        System.out.println(id + " inside getConfTextValue - after attach" + webDriver);
+        return registrationConfirmationPageElement.getConfText().getText();
     }
 }

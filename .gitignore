@@ -3,3 +3,4 @@ target/
 allure-data/
 .DS_Store
 projects
+.log

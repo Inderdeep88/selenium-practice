@@ -14,8 +14,9 @@ import java.net.URL;
 
 public class WebDriverManager {
     static String webDriverBasePath= "src/main/resources/";
-    public static synchronized WebDriver createDriverInstance() {
-        System.out.println("CREATING INSTANCE..");
+    public static WebDriver createDriverInstance() {
+        long id = Thread.currentThread().threadId();
+        System.out.println(id+" CREATING INSTANCE..");
         WebDriver webDriver;
         if (System.getProperty("host") != null && System.getProperty("host").equals("grid")) {
             webDriver = createRemoteWebDriver();
@@ -23,7 +24,7 @@ public class WebDriverManager {
         else {
             webDriver = createLocalWebDriver();
         }
-        System.out.println("Created Webdriver instance "+webDriver);
+        System.out.println(id+" Created Webdriver instance "+webDriver);
         return webDriver;
     }
 

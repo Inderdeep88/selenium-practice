@@ -1,41 +1,47 @@
 package com.newtours.elements;
 
+import com.newtours.pages.RegistrationConfirmationPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class RegistrationPageElement {
 
-    public WebElement getFirstNameTxt(WebDriver driver) {
-        return driver.findElement(By.name("firstName"));
+    WebDriver webDriver;
+    public RegistrationPageElement(WebDriver webDriver){
+        this.webDriver = webDriver;
     }
 
-    public WebElement getLastNameTxt(WebDriver driver) {
-        return driver.findElement(By.name("lastName"));
+    public WebElement getFirstNameTxt() {
+        return webDriver.findElement(By.name("firstName"));
     }
 
-    public WebElement getPhoneTxt(WebDriver driver) {
-        return driver.findElement(By.name("phone"));
+    public WebElement getLastNameTxt() {
+        return webDriver.findElement(By.name("lastName"));
     }
 
-    public WebElement getEmailTxt(WebDriver driver) {
-        return driver.findElement(By.name("userName"));
+    public WebElement getPhoneTxt() {
+        return webDriver.findElement(By.name("phone"));
     }
 
-    public WebElement getUsernameTxt(WebDriver driver) {
-        return driver.findElement(By.name("email"));
+    public WebElement getEmailTxt() {
+        return webDriver.findElement(By.name("userName"));
     }
 
-    public WebElement getPasswordTxt(WebDriver driver) {
-        return driver.findElement(By.name("password"));
+    public WebElement getUsernameTxt() {
+        return webDriver.findElement(By.name("email"));
     }
 
-    public WebElement getConfirmPasswordTxt(WebDriver driver) {
-        return driver.findElement(By.name("confirmPassword"));
+    public WebElement getPasswordTxt() {
+        return webDriver.findElement(By.name("password"));
     }
 
-    public WebElement getSubmitBtn(WebDriver driver) {
-        return driver.findElement(By.name("submit"));
+    public WebElement getConfirmPasswordTxt() {
+        return webDriver.findElement(By.name("confirmPassword"));
+    }
+
+    public WebElement getSubmitBtn() {
+        return webDriver.findElement(By.name("submit"));
     }
 
 }
