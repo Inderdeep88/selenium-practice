@@ -8,11 +8,11 @@
 
 
 ### Local webdriver execution:
-`mvn clean test -DsuiteXmlFile=RegistrationSuite.xml -Dbrowser=chrome -Dhost=local`
+`mvn clean test -DmoduleName=Registration -Dbrowser=chrome -Dhost=local`
 
 
 ### Remote webdriver execution on Selenium Grid:
-`mvn clean test -DsuiteXmlFile=RegistrationSuite.xml -Dbrowser=chrome -Dhost=grid -DhubUrl=localhost -DbrowserVersion=110.0`
+`mvn clean test -DmoduleName=Registration -Dbrowser=chrome -Dhost=grid -DhubUrl=localhost -DbrowserVersion=110.0`
 
 
 **browser** values:
@@ -30,3 +30,6 @@
 **host** values:
 - local
 - grid
+
+**moduleName** values (TestNG XML file):
+- Registration
