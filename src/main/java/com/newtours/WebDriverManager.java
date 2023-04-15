@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 public class WebDriverManager {
@@ -19,7 +20,11 @@ public class WebDriverManager {
         Log.info("CREATING WEBDRIVER INSTANCE..");
         WebDriver webDriver;
         if (System.getProperty("host") != null && System.getProperty("host").equals("grid")) {
-            webDriver = createRemoteWebDriver();
+            try {
+                webDriver = createRemoteWebDriver();
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
         }
         else {
             webDriver = createLocalWebDriver();
@@ -31,7 +36,7 @@ public class WebDriverManager {
     private static WebDriver createLocalWebDriver(){
         WebDriver localWebDriver;
         if (System.getProperty("browser") != null && System.getProperty("browser").equals("chrome")){
-            System.setProperty("webdriver.chrome.driver", webDriverBasePath + "chromedriver_112");
+            System.setProperty("webdriver.chrome.driver", webDriverBasePath + "chromedriver_111");
             System.setProperty("webdriver.chrome.logfile", webDriverBasePath + "chromedriver.log");
             System.setProperty("webdriver.chrome.verboseLogging", "true");
             ChromeOptions options = new ChromeOptions();
@@ -48,25 +53,26 @@ public class WebDriverManager {
         }
         return localWebDriver;
     }
-    private static WebDriver createRemoteWebDriver() {
-        MutableCapabilities capabilities ;
+    private static WebDriver createRemoteWebDriver() throws MalformedURLException {
+        FirefoxOptions firefoxOptions;
+        ChromeOptions chromeOptions;
         WebDriver remoteWebDriver;
 
         String url = "http://"+System.getProperty("hubUrl")+":4444/wd/hub";
 
         if (System.getProperty("browser") != null && System.getProperty("browser").equals("chrome")){
-            capabilities = new ChromeOptions();
+            chromeOptions = new ChromeOptions();
+            chromeOptions.setBrowserVersion(System.getProperty("browserVersion"));
+            remoteWebDriver = new RemoteWebDriver(URI.create(url).toURL(),chromeOptions);
         } else if (System.getProperty("browser") != null && System.getProperty("browser").equals("firefox")){
-            capabilities = new FirefoxOptions();
+            firefoxOptions = new FirefoxOptions();
+            firefoxOptions.setBrowserVersion(System.getProperty("browserVersion"));
+            remoteWebDriver = new RemoteWebDriver(URI.create(url).toURL(),firefoxOptions);
         } else {
-            capabilities = new ChromeOptions();
+            chromeOptions = new ChromeOptions();
+            remoteWebDriver = new RemoteWebDriver(URI.create(url).toURL(),chromeOptions);
         }
 
-        try {
-            remoteWebDriver = new RemoteWebDriver(new URL(url),capabilities);
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
         return remoteWebDriver;
     }
 }

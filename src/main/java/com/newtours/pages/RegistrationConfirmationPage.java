@@ -13,7 +13,6 @@ public class RegistrationConfirmationPage extends BasePage{
     public RegistrationConfirmationPage(WebDriver webDriver) {
         super(webDriver);
         this.registrationConfirmationPageElement = new RegistrationConfirmationPageElement(webDriver);
-        this.webDriver = webDriver;
     }
 
     public String getConfTextValue(){
