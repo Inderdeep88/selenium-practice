@@ -79,7 +79,7 @@ public class RegistrationTest extends BaseTest {
         PageManager pageManager = new PageManager(getWebDriver());
         pageManager.getRegistrationPage().open();
         pageManager.getRegistrationPage().enterContactInfo("Inder5","Singh5","9654110337","inderdeep88@gmail.com");
-        pageManager.getRegistrationPage().enterUserInfo("isingh88_5","hello@123","hello@123");
+        pageManager.getRegistrationPage().enterUserInfo("isingh88_5","hello@12","hello@123");
         pageManager.getRegistrationPage().submitInfo();
         String actConfText = pageManager.getRegistrationConfirmationPage().getConfTextValue();
         String refConfText = "Note: Your user name is isingh88_5.";

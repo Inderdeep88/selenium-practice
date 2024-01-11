@@ -16,7 +16,7 @@ import java.net.URL;
 public class WebDriverManager {
     static String webDriverBasePath= "src/main/resources/";
     public static WebDriver createDriverInstance() {
-        long id = Thread.currentThread().threadId();
+        long id = Thread.currentThread().getId();
         Log.info("CREATING WEBDRIVER INSTANCE..");
         WebDriver webDriver;
         if (System.getProperty("host") != null && System.getProperty("host").equals("grid")) {

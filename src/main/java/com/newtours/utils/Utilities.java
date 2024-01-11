@@ -14,7 +14,7 @@ import java.util.Date;
 public class Utilities {
 
     public static void addAttachment(String name, WebDriver driver) {
-        long id = Thread.currentThread().threadId();
+        long id = Thread.currentThread().getId();
         Allure.addAttachment("Thread ID [" + id + "] - ["+ driver + "]" + name, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 

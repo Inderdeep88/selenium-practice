@@ -1,0 +1,96 @@
+[1700136226.370][INFO]: Starting ChromeDriver 111.0.5563.64 (c710e93d5b63b7095afe8c2c17df34408078439d-refs/branch-heads/5563@{#995}) on port 41414
+[1700136226.371][INFO]: Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.[[1700136226.907][INFO]: [78d73f3f2cc0fc0cc987437cd641bc52] COMMAND InitSession {
+   "capabilities": {
+      "firstMatch": [ {
+         "browserName": "chrome",
+         "goog:chromeOptions": {
+            "args": [ "--remote-allow-origins=*" ],
+            "extensions": [  ]
+         }
+      } ]
+   },
+   "desiredCapabilities": {
+      "browserName": "chrome",
+      "goog:chromeOptions": {
+         "args": [ "--remote-allow-origins=*" ],
+         "extensions": [  ]
+      }
+   }
+}[[1700136226.924][INFO]: Populating Preferences file: {
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[1700136226.924][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[1700136226.927][INFO]: Launching chrome: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --allow-pre-commit-input --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --enable-automation --enable-blink-features=ShadowDOMV0 --enable-logging --log-level=0 --no-first-run --no-service-autorun --password-store=basic --remote-allow-origins=* --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-data-dir=/var/folders/7w/b2ynzxpd25lcqfz0n23g2hdh0000gp/T/.com.google.Chrome.1WeBLq data:,[[21784:259:1116/173410.197408:ERROR:chrome_browser_main.cc(1079)] The use of Rosetta to run the x64 version of Chromium on Arm is neither tested nor maintained, and unexpected behavior will likely result. Please check that all tools that spawn Chromium are Arm-native.
+
+DevTools listening on ws://127.0.0.1:63911/devtools/browser/e7d4a9ed-1ee7-4f6d-9e5b-cc5457a83614[[1700136253.682][DEBUG]: DevTools HTTP Request: http://localhost:63911/json/versionoobjc[21877]: Class WebSwapCGLLayer is implemented in both /System/Library/Frameworks/WebKit.framework/Versions/A/Frameworks/WebCore.framework/Versions/A/Frameworks/libANGLE-shared.dylib (0x7ffb50068ec8) and /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/108.0.5359.94/Libraries/libGLESv2.dylib (0x11051f568). One of the two will be used. Which one is undefined.[[1700136257.501][DEBUG]: DevTools HTTP Response: {
+   "Browser": "Chrome/108.0.5359.94",
+   "Protocol-Version": "1.3",
+   "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
+   "V8-Version": "10.8.168.21",
+   "WebKit-Version": "537.36 (@713576b895246504ccc6b92c2fb8ce2d60194074)",
+   "webSocketDebuggerUrl": "ws://localhost:63907/devtools/browser/4ffe81d1-17f9-42d5-b7ea-d70b7b149e2d"
+}
+
+[1700136257.514][INFO]: Failed to connect to Chrome. Attempting to kill it.[[1700136259.979][INFO]: [23f994ed3147c996489cb697030d7cc6] RESPONSE InitSession ERROR session not created: This version of ChromeDriver only supports Chrome version 111
+Current browser version is 108.0.5359.94 with binary path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+[1700136259.979][DEBUG]: Log type 'driver' lost 0 entries on destruction
+[1700136259.979][DEBUG]: Log type 'browser' lost 0 entries on destruction

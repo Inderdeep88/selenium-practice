@@ -16,18 +16,18 @@ public class Log {
     }
     //Warn Level Logs
     public static void warn (String message) {
-        Log.warn(Thread.currentThread().threadId()+" - "+message);
+        Log.warn(Thread.currentThread().getId()+" - "+message);
     }
     //Error Level Logs
     public static void error (String message) {
-        Log.error(Thread.currentThread().threadId()+" - "+message);
+        Log.error(Thread.currentThread().getId()+" - "+message);
     }
     //Fatal Level Logs
     public static void fatal (String message) {
-        Log.fatal(Thread.currentThread().threadId()+" - "+message);
+        Log.fatal(Thread.currentThread().getId()+" - "+message);
     }
     //Debug Level Logs
     public static void debug (String message) {
-        Log.debug(Thread.currentThread().threadId()+" - "+message);
+        Log.debug(Thread.currentThread().getId()+" - "+message);
     }
 }
